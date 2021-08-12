@@ -1,0 +1,94 @@
+/* general */
+body {
+    color: rgba(245, 244, 250, 1);
+    background-color:#0C0C0C;
+    background-image: url("../images/pexels-tyler-lastovich-997443.webp");
+    background-repeat: no-repeat;
+    background-size: 100vw;
+}
+
+.container {
+    width: 1200px;
+    padding: 20px 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* search-form */
+.search-form{
+    max-width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.search-form__input {
+    width: 220px;
+    padding: 4px;
+    background-color: rgba(245, 244, 250, 1);
+    outline: none;
+    border: 1px solid rgba(245, 244, 250, 1);
+    border-radius: 4px;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.7));
+
+}
+
+.search-form__input:focus {
+    border-color: #2196f3;
+}
+
+/* gallery */
+.gallery {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
+    margin-top: -20px;
+    margin-left: -20px;
+}
+
+.photo-card{
+    height: max-content;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 20px;
+    flex-basis: calc(100% / 3 - 20px);
+    border-radius: 10px;
+    filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.7));
+    overflow: hidden;
+}
+
+.photo-card__img {
+    width: 100%;
+    padding: 0px;
+    
+}
+
+.stats {
+    width: 100%;
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    display: flex;
+    justify-content: space-around;
+    pointer-events: none;
+    transform: translateY(-120%);
+    transition: transform 250ms linear;
+}
+
+.photo-card:hover .stats,
+.photo-card:focus .stats {
+    transform: translateY(0%);
+}
+
+.stats-item {
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    
+    /* margin: 0px 10px 0px 0px; */
+}
+
+.material-icons {
+    margin-right: 2px;
+}
