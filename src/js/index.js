@@ -2,9 +2,7 @@
 var _ = require('lodash');// lodash.debounce
 import cards from '../templates/card.hbs';// handlebars
 import { error } from '../../node_modules/@pnotify/core/dist/PNotify.js';// pnotify
-
-//const basicLightbox = require('basiclightbox');
-import * as basicLightbox from 'basiclightbox';
+import * as basicLightbox from 'basiclightbox';//basicLightbox
 
 // DOM-элементы
 const refs = {
@@ -64,14 +62,17 @@ function sendRequest(value) {
         .catch(error => console.warn(error))
 }
 
+// создаем карточки с помощью handlebars
 function makeCards(photosArray) {
     refs.listEl.innerHTML = cards(photosArray);
 }
 
+// поиск элемента по ID
 function getPhotoById(array, id) {
     return array.find(x => x.id === +id);
 }
 
+// модалка с помощью basicLightbox
 function makeModalWindow(object) {
     const instance = basicLightbox.create(`<img src='${object.largeImageURL}' width="800" height="600">`);
     instance.show();
