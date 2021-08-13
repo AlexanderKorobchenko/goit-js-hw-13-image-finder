@@ -1,5 +1,10 @@
 /* general */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+    min-width: 1200px;
     color: rgba(245, 244, 250, 1);
     background-color:#0C0C0C;
     background-image: url("../images/pexels-tyler-lastovich-997443.webp");
@@ -56,6 +61,13 @@ body {
     border-radius: 10px;
     filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.7));
     overflow: hidden;
+    transform: scale(100%);
+    transition: transform 200ms linear;
+}
+
+.photo-card:hover,
+.photo-card:focus {
+    transform: scale(102%);
 }
 
 .photo-card__img {
@@ -73,7 +85,7 @@ body {
     justify-content: space-around;
     pointer-events: none;
     transform: translateY(-120%);
-    transition: transform 250ms linear;
+    transition: transform 200ms linear;
 }
 
 .photo-card:hover .stats,
@@ -91,4 +103,64 @@ body {
 
 .material-icons {
     margin-right: 2px;
+}
+
+/* loader */
+.loader {
+  position: fixed;
+  z-index: 99;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.loader.hidden {
+  display: none;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.circle:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.circle:nth-child(1) {
+  animation: hop 1s ease-in-out infinite;
+}
+
+.circle:nth-child(2) {
+  animation: hop 1s ease-in-out infinite 0.1s;
+}
+
+.circle:nth-child(3) {
+  animation: hop 1s ease-in-out infinite 0.2s;
+}
+
+@keyframes hop {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  25% {
+    transform: scale(1.1) translateY(10px);
+  }
+  50% {
+    transform: scale(1.2) translateY(20px);
+  }
+  75% {
+    transform: scale(1.1) translateY(10px);
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+  }
 }
