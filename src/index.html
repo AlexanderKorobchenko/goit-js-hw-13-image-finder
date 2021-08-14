@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./css/basicLightbox.min.css">
   </head>
 
-  <body>
+  <body id="go-up">
     <div class="container">
       
       <div class="loader hidden">
@@ -27,6 +27,12 @@
         <div class="circle"></div>
         <div class="circle"></div>
       </div>
+
+      <a href="#go-up" class="go-up__link">
+        <svg class="go-up__icon">
+          <use href="./images/go-up.svg#arrow-up2"></use>
+        </svg>
+      </a>
 
       <form class="search-form" id="search-form">
         <input class="search-form__input"
@@ -39,6 +45,7 @@
       <ul class="gallery" id="gallery">
         <!-- Список <li> с карточками изображений -->
       </ul>
+      <p class="gallery__end hidden">End of content</p>
       
     </div>
     
