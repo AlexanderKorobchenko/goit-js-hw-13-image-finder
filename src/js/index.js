@@ -65,6 +65,7 @@ function onScpollSearch() {
         newPictureAPIServise.getData().then(result => {
             processResults(result);// обработка результата fetch
             changeLoader.clearLoader();// закргузчик -
+            refs.listEl.lastElementChild.scrollIntoView({ block: "start" });//плавный скролл после загрузки
         });
     }
 };
