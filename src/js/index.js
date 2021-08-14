@@ -42,10 +42,12 @@ function onInputSearch(event) {
     newPictureAPIServise.getData().then(result => {
         processResults(result);// обработка результата fetch
         changeLoader.clearLoader();// закргузчик -
-        info({
-            text: `Total images found: ${newPictureAPIServise.total}`,
-            delay: 2000,
-        });// сколько найдено
+        if (result.hits.length !== 0) {
+            info({
+                text: `Total images found: ${newPictureAPIServise.total}`,
+                delay: 2000,
+            })
+        };// сколько найдено
     });
 };
 
@@ -55,7 +57,7 @@ function onScpollSearch() {
     if (document.documentElement.scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
         // картинки уже закончились?
         if (newPictureAPIServise.amount >= newPictureAPIServise.total) {
-            refs.endContetn.classList.remove('hidden');
+            refs.endContetn.classList.remove('hidden');// покажи "End content"
             return;
         };
         // все в порядке, работаем...
@@ -73,7 +75,7 @@ function processResults(result) {
     if (result.hits.length === 0) {
         error({
             text: `No results were found for "${newPictureAPIServise.inputValue}".`,
-            //mode: 'dark'
+            delay: 3000
         });
         clearCards();
         return;
@@ -81,16 +83,6 @@ function processResults(result) {
 
     // рендерим карточки
     makeCards(result.hits);
-
-    // слушаем карточки
-    refs.listEl.addEventListener('click', onFindElement);
-
-    // поиск выбраного элемента, вызов модалки basicLightbox
-    function onFindElement(event) {
-        const id = event.srcElement.id;
-        const photoById = getPhotoById(result.hits, id);
-        makeModalWindow(photoById);
-    };
 };
 
 // создаем карточки (handlebars)
@@ -103,13 +95,11 @@ function clearCards() {
     refs.listEl.innerHTML = '';
 };
 
-// поиск элемента по ID
-function getPhotoById(array, id) {
-    return array.find(element => element.id === +id);
-};
+// слушаем карточки
+refs.listEl.addEventListener('click', onFindElement);
 
-// модалка basicLightbox
-function makeModalWindow(object) {
-    const instance = basicLightbox.create(`<img src='${object.largeImageURL}'>`);
+// делаем модалку
+function onFindElement(event) {
+    const instance = basicLightbox.create(`<img src='${event.srcElement.attributes[5].value}'>`);
     instance.show();
 };
