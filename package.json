@@ -3,10 +3,10 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://alexanderkorobchenko.github.io/goit-js-hw-13-image-finder",
+  "homepage": "https://alexanderkorobchenko.github.io/my-project_Image-search-engine",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-13-image-finder/"
+    "build": "parcel build src/*.html --public-url /my-project_Image-search-engine/"
   },
   "repository": {
     "type": "git",
